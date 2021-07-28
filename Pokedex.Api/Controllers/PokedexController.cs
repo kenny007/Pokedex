@@ -1,15 +1,22 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Pokedex.Api.Controllers
-{
+namespace Pokedex.Api.Controllers {
     [Route("api/[controller]")]
     [ApiController]
-    public class PokedexController : ControllerBase
-    {
+    public class PokedexController : ControllerBase {
+        public PokedexController() {
+            
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get(string pokemonName) {
+            return Ok();
+        }
+
+        [HttpGet("Translated/{PokemonName}")]
+        public async Task<IActionResult> GetTranslated(string pokemonName) {
+            return Ok();
+        }
     }
 }
