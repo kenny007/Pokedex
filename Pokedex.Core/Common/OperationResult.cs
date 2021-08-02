@@ -1,10 +1,8 @@
-﻿namespace Pokedex.Core.Common
-{
+﻿namespace Pokedex.Core.Common {
     /// <summary>
     /// Internal operation result wrapper
     /// </summary>
-    public class OperationResult<T>
-    {
+    public class OperationResult<T> {
         /// <summary>
         /// Request result
         /// </summary>
@@ -34,11 +32,8 @@
         }
     }
 
-    public class OperationResult : OperationResult<string>
-    {
+    public class OperationResult : OperationResult<string> {
         protected OperationResult(bool success, string error, string errorCode = null, string data = default) : base(success, error, errorCode, data) { }
-
-
 
         /// <summary>
         /// Returns failure result

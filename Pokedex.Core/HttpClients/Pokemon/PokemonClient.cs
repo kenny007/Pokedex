@@ -4,14 +4,11 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using PokemonModel = Pokedex.Core.Models.Pokemon;
 
-namespace Pokedex.Core.HttpClients.Pokemon
-{
-    public class PokemonClient : IPokemonClient
-    {
+namespace Pokedex.Core.HttpClients.Pokemon {
+    public class PokemonClient : IPokemonClient {
         private readonly HttpClient _httpClient;
 
-        public PokemonClient(HttpClient httpClient)
-        {
+        public PokemonClient(HttpClient httpClient) {
             _httpClient = httpClient;
         }
 

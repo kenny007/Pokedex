@@ -1,10 +1,8 @@
 ﻿using Pokedex.Core.Models;
 using System.Threading.Tasks;
 
-namespace Pokedex.Core.Services.Pokemon
-{
-    public interface IPokemonService
-    {
+namespace Pokedex.Core.Services.Pokemon {
+    public interface IPokemonService {
 
         /// <summary>
         /// Get pokemon by pokemon name
@@ -12,6 +10,13 @@ namespace Pokedex.Core.Services.Pokemon
         /// <param name="pokemonName"></param>
         /// <returns></returns>
         Task<PokemonDto> GetAsync(string pokemonName);
+
+        /// <summary>
+        /// Get translated pokemon 
+        /// </summary>
+        /// <param name="pokemonName"></param>
+        /// <returns></returns>
+        Task<PokemonDto> GetTranslatedAsync(string pokemonName);
 
     }
 }

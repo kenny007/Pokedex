@@ -1,4 +1,3 @@
-using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -9,17 +8,20 @@ using Pokedex.Api.Configurations;
 using Pokedex.Core.AppSettings;
 using Pokedex.Core.Services.Pokemon;
 
-namespace Pokedex.Api {
+namespace Pokedex.Api
+{
     /// <summary>
     /// Program startup point
     /// </summary>
-    public class Startup {
+    public class Startup
+    {
         private readonly PokemonSettings _pokemonSettings;
         /// <summary>
         /// Startup constructor
         /// </summary>
         /// <param name="configuration"></param>
-        public Startup(IConfiguration configuration) {
+        public Startup(IConfiguration configuration)
+        {
             _pokemonSettings = PokemonSettings.GetFromConfiguration(configuration);
             Configuration = configuration;
         }
@@ -27,7 +29,8 @@ namespace Pokedex.Api {
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services) {
+        public void ConfigureServices(IServiceCollection services)
+        {
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

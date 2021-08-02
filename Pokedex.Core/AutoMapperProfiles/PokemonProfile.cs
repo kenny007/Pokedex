@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Pokedex.Core.Models;
 using System.Linq;
+using Pokedex.Core.Common;
 
 namespace Pokedex.Core.AutoMapperProfiles {
     /// <summary>
@@ -12,7 +13,7 @@ namespace Pokedex.Core.AutoMapperProfiles {
             CreateMap<Pokemon, PokemonDto>()
                 .ForMember(d => d.IsLegendary, map => map.MapFrom(h => h.Is_Legendary))
                 .ForMember(d => d.Habitat, map => map.MapFrom(h => h.Habitat.Name))
-                .ForMember(d => d.Description, m => m.MapFrom(h => h.Flavor_Text_Entries.FirstOrDefault().Flavor_Text));
+                .ForMember(d => d.Description, m => m.MapFrom(h => h.Flavor_Text_Entries.FirstOrDefault().Flavor_Text.FormatString()));
         }
     }
 }
