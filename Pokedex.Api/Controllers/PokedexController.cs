@@ -19,8 +19,10 @@ namespace Pokedex.Api.Controllers {
         /// <param name="pokemonName"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> Get(string pokemonName) {
-            return Ok();
+        public async Task<IActionResult> Get(string pokemonName)
+        {
+            var result = await _pokemonService.GetAsync(pokemonName);
+            return Ok(result);
         }
 
         /// <summary>
