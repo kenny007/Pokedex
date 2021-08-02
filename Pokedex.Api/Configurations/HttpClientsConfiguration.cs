@@ -1,34 +1,32 @@
-﻿using System;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Pokedex.Core.AppSettings;
 using Pokedex.Core.HttpClients.Pokemon;
 using Pokedex.Core.HttpClients.PokemonTranslation;
+using System;
 
 namespace Pokedex.Api.Configurations {
     /// <summary>
     /// Configuration of HTTP clients using IHttpClientFactory
     /// </summary>
-    public static class HttpClientsConfiguration {
+    public static class HttpClientsConfiguration
+    {
         /// <summary>
-        /// Add HTTP clients to DI container
+        /// Extension method to register http clients
         /// </summary>
-        /// <param name="services">Service collection</param>
-        /// <param name="configuration">Configuration</param>
-        public static IServiceCollection RegisterHttpClients(this IServiceCollection services, IConfiguration configuration) {
-            var pokemonSettings = configuration.GetSection(nameof(PokemonSettings)).Get<PokemonSettings>();
-            var translationSettings = configuration.GetSection(nameof(PokemonTranslationSettings)).Get<PokemonTranslationSettings>();
+        /// <param name="services"></param>
+        /// <param name="settings"></param>
+        public static void RegisterHttpClients(this IServiceCollection services, PokemonSettings settings)
+        {
 
-            services.AddHttpClient<IPokemonClient, PokemonClient>(client => {
-                client.BaseAddress = new Uri(pokemonSettings.BaseUrl);
-            });
-
-            services.AddHttpClient<IPokemonTranslationClient, IPokemonTranslationClient>(client =>
+            services.AddHttpClient<IPokemonClient, PokemonClient>(client =>
             {
-                client.BaseAddress = new Uri(translationSettings.BaseUrl);
+                client.BaseAddress = new Uri(settings.BaseUrl);
             });
 
-            return services;
+            services.AddHttpClient<IPokemonTranslationClient, PokemonTranslationClient>(client =>
+            {
+                client.BaseAddress = new Uri(settings.TranslationUrl);
+            });
         }
     }
 }
