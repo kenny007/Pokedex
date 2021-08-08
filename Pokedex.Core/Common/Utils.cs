@@ -26,5 +26,6 @@ namespace Pokedex.Core.Common {
                 .Replace("\r", " ")
                 .Replace("\f", " ");
         }
+
     }
 }

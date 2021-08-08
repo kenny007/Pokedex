@@ -8,8 +8,7 @@ namespace Pokedex.Core.AutoMapperProfiles {
     /// Basic pokemon profile
     /// </summary>
     public class PokemonProfile : Profile {
-        public PokemonProfile()
-        {
+        public PokemonProfile() {
             CreateMap<Pokemon, PokemonDto>()
                 .ForMember(d => d.IsLegendary, map => map.MapFrom(h => h.Is_Legendary))
                 .ForMember(d => d.Habitat, map => map.MapFrom(h => h.Habitat.Name))
